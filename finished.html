@@ -33,6 +33,70 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="d-flex justify-content-between my-3">
+            <button id="backButton" class="btn btn-info text-white font-weight-bold">Back</button>
+            <h2 id="imageLabel" class="text-white"><u>PP Slide 1</u></h2>
+            <button id="nextButton" class="btn btn-secondary text-white font-weight-bold">NEXT</button>
+        </div>
+        <div id="carouselImg" class="border border-2 border-secondary">
+            <img src="images/PowerPoint/Capstone Presentation.png" alt="First slide" width="100%"/>
+        </div>
+        <div class="d-flex justify-content-between my-3">
+            <button id="backButton" class="btn btn-info text-white font-weight-bold">Back</button>
+            <h2 id="imageLabel" class="text-white"><u>PP Slide 1</u></h2>
+            <button id="nextButton" class="btn btn-secondary text-white font-weight-bold">NEXT</button>
+        </div>
     </div>
 </body>
+<script>
+    var carouselImg = document.querySelector(`#carouselImg`);
+    var backButton = document.querySelectorAll(`#backButton`);
+    var nextButton = document.querySelectorAll(`#nextButton`);
+    var imageLabel = document.querySelectorAll(`#imageLabel`);
+
+
+    var images = [[`images/PowerPoint/Capstone Presentation.png`, `PP Slide 1`],[`images/PowerPoint/Capstone Presentation(1).png`, `PP Slide 2`],[`images/PowerPoint/Capstone Presentation(2).png`, `PP Slide 3`],[`images/PowerPoint/Capstone Presentation(3).png`, `PP Slide 4`],[`images/PowerPoint/Capstone Presentation(4).png`, `PP Slide 5`],[`images/PowerPoint/Capstone Presentation(5).png`, `PP Slide 6`],[`images/PowerPoint/Capstone Presentation(6).png`, `PP Slide 7`],[`images/PowerPoint/Capstone Presentation(7).png`, `PP Slide 8`],[`images/PowerPoint/Capstone Presentation(8).png`, `PP Slide 9`],[`images/PowerPoint/Capstone Presentation(9).png`, `PP Slide 10`],[`images/PowerPoint/Capstone Presentation(10).png`, `PP Slide 11`],[`images/PowerPoint/Capstone Presentation(11).png`, `PP Slide 12`]];
+
+    console.log(images);
+
+    var index = 0;
+
+    for(let i=0; i < backButton.length; i++){
+        backButton[i].addEventListener(`click`, (e) => {
+            e.preventDefault();
+            if(index-1 >= 0){
+                index--;
+                carouselImg.innerHTML = `<img src="${images[index][0]}" alt="${images[index][1]}" hieght="100%" width="100%">`;
+                imageLabel[0].innerHTML = `<u>${images[index][1]}</u>`;
+                imageLabel[1].innerHTML = `<u>${images[index][1]}</u>`;
+            }
+            else{
+                index = images.length-1;
+                carouselImg.innerHTML = `<img src="${images[index][0]}" alt="${images[index][1]}" hieght="100%" width="100%">`;
+                imageLabel[0].innerHTML = `<u>${images[index][1]}</u>`;
+                imageLabel[1].innerHTML = `<u>${images[index][1]}</u>`;
+            }
+        });
+    }
+
+    for(let i=0; i < nextButton.length; i++){
+        nextButton[i].addEventListener(`click`, (e) => {
+            e.preventDefault();
+            if(index+1 < images.length){
+                index++;
+                carouselImg.innerHTML = `<img src="${images[index][0]}" alt="${images[index][1]}" hieght="100%" width="100%">`;
+                imageLabel[0].innerHTML = `<u>${images[index][1]}</u>`;
+                imageLabel[1].innerHTML = `<u>${images[index][1]}</u>`;
+            }
+            else{
+                index = 0;
+                carouselImg.innerHTML = `<img src="${images[index][0]}" alt="${images[index][1]}" hieght="100%" width="100%">`;
+                imageLabel[0].innerHTML = `<u>${images[index][1]}</u>`;
+                imageLabel[1].innerHTML = `<u>${images[index][1]}</u>`;
+            }
+        });
+    }
+
+</script>
 </html>
